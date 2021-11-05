@@ -7,6 +7,8 @@ import Products from './products';
 import Company from './company';
 import AddBook from './addbook';
 import NoMatch from './nomatch';
+import Details from './details';
+import FindBook from './findbook';
 import {
   BrowserRouter as Router,
   Switch,
@@ -17,7 +19,6 @@ import {
   NavLink,
   Prompt
 } from "react-router-dom";
-import Details from './details';
 
 /*Above is imports, below is our main function for the whole webpage*/
 
@@ -40,6 +41,9 @@ function App(props) {
     </Route>
     <Route path="/add-book">
       <AddBook bookFacade={props.bookFacade} />
+    </Route>
+    <Route path="/find-book">
+      <FindBook bookFacade={props.bookFacade} />
     </Route>
     <Route>
       <NoMatch />
