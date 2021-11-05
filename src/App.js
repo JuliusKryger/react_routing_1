@@ -17,6 +17,7 @@ import {
   NavLink,
   Prompt
 } from "react-router-dom";
+import Details from './details';
 
 /*Above is imports, below is our main function for the whole webpage*/
 
@@ -28,8 +29,11 @@ function App(props) {
     <Route exact path="/">
       <Home />
     </Route>
-    <Route path="/products">
+    <Route exact path="/products">
       <Products bookFacade={props.bookFacade}/>
+    </Route>
+    <Route path="/products/:id">
+      <Details bookFacade={props.bookFacade}/>
     </Route>
     <Route path="/company">
       <Company />

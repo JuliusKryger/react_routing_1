@@ -16,8 +16,7 @@ export default function Products(props) {
     return (
       <div>
         <h2>We've {books.length} number of books</h2>
-        <ul>{books.map((book => <li key={book.id}> {book.title} <Link to={`${URL}`}/></li>))}</ul>
-        <Details bookFacade={books}/>
+        <ul>{books.map((book => <li key={book.id}> {book.title} <NavLink to={`/products/${book.id}`}> <button id={book.id}>details</button></NavLink>   </li>))}</ul>
       </div>
     );
   }
