@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, state} from "react";
 import {
   BrowserRouter as Router,
   Switch,
@@ -14,7 +14,6 @@ export default function FindBook (props) {
 
   const [id, setId] = useState(0);
   const [book, setBook] = useState({ id: 0, title: "", info: "" });
-  console.log(book)
 
   const books = props.bookFacade.getBooks()
 
@@ -39,6 +38,39 @@ return (
 <h3>Book Title: {book.title}</h3>
 <h3>Book Info: {book.info}</h3>
 
+<UpdateBook bookFacade={book}/>
+
 </div>
 );
+}
+
+class UpdateBook extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = { id: 0, title: "", info: "" };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }  
+
+  handleChange = (e) => {
+    this.setState({title: e.target.value});
+    //console.log(this.state)  
+  }
+
+  handleSubmit = (evt) => {
+    alert('A new title was submitted: ' + this.state.title);
+    evt.preventDefault();
+  }
+
+  render() {
+    return (
+      <form onSubmit={this.handleSubmit}>
+        <label>
+          Change Book Title:
+          <input type="text" value={this.state.title} onChange={this.handleChange} /></label>
+          <input type="submit" value="Submit" />
+      </form>
+    );
+  }
 }
